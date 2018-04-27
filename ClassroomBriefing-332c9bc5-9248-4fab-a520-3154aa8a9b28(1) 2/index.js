@@ -9,6 +9,7 @@ exports.handler = function(event, context, callback) {
     const alexa = Alexa.handler(event, context);
 
     //hi prof sterpe
+    // right back atcha, Will
 
     alexa.appId = 'amzn1.ask.skill.e4b917d2-ebd3-40d3-9019-71f569430f8d';
     alexa.dynamoDBTableName = 'ClassroomBriefingAttributes';
