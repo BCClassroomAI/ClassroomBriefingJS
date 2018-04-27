@@ -8,8 +8,9 @@ const ddb = new AWS.DynamoDB();
 exports.handler = function(event, context, callback) {
     const alexa = Alexa.handler(event, context);
 
-    //hi prof sterpe
+    // hi prof sterpe
     // right back atcha, Will
+    // one more time
 
     alexa.appId = 'amzn1.ask.skill.e4b917d2-ebd3-40d3-9019-71f569430f8d';
     alexa.dynamoDBTableName = 'ClassroomBriefingAttributes';
