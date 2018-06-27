@@ -100,7 +100,7 @@ const handlers = {
         } else {
             console.log('*** I have the courseNumber: ' + this.event.request.intent.slots.courseNumber.value);
             this.attributes.courseNumber = this.event.request.intent.slots.courseNumber.value;
-            let speechOutput = "And for which date should I add this note?"
+            let speechOutput = "And for which date should I add this note?";
             this.response.speak(speechOutput).listen("For which date should I add this note?");
             this.emit(':responseReady')
         }
