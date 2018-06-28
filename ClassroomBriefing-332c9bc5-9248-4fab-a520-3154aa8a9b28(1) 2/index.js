@@ -15,9 +15,11 @@ function initializeBriefingNotes(attributes) {
     if (attributes.briefingNotes == undefined) {
         attributes.briefingNotes = {
             "1111": {
-                "2018-11-01": ["We are in course 1111 and today is November 1st", "This is my second note for course 1111 on November 1st."],
-                "2018-11-02": ["We are in course 1111 and today is November 2nd"],
-                "2018-11-03": ["We are in course 1111 and today is November 3rd"]
+                "2018-07-02": ["Hello. My name is Alexa and I will be your new class TA. We are in course 1111 and today is July 2nd. In today's lesson, we plan to demonstrate a couple of features" +
+                "such as cold call, quiz questions, forming groups, and bonus points in a mock classroom environment. We hope to provide a realistic portrayal of Alexa's functionality and role in a classroom."],
+                "2018-07-03": ["Hello. My name is Alexa and I will be your new class TA. We are in course 1111 and today is July 3rd. In today's lesson, we plan to demonstrate a couple of features" +
+                "such as cold call, quiz questions, forming groups, and bonus points in a mock classroom environment. We hope to provide a realistic portrayal of Alexa's functionality and role in a classroom."],
+                "2018-07-04": ["We are in course 1111 and today is July 4th"]
             },
             "2222": {
                 "2018-11-01": ["We are in course 2222 and today is November 1st"],
@@ -58,14 +60,14 @@ const handlers = {
             let notesAccessed = this.attributes.briefingNotes[courseNumber][classDate];
             let speechOutput = "";
             if (notesAccessed.length == 1) {
-                speechOutput = notesAccessed + '<break time = "1s"/>' + " What else can I do for you today?";
+                speechOutput = notesAccessed;
             } else {
                 notesAccessed.forEach(note => {
                     speechOutput += '<break time = "1s"/>' + `Note ${notesAccessed.indexOf(note) + 1}: "${note}" `;
                 });
                 speechOutput += '<break time = "1s"/>' + " What else can I do for you today?"
             }
-            this.response.speak(speechOutput).listen('What else can I do for you today?');
+            this.response.speak(speechOutput);
             this.emit(':responseReady');
         }
     },
