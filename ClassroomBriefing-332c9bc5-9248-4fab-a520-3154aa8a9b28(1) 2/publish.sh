@@ -1,7 +1,7 @@
 #!/bin/bash
 
-rm ./ClassroomBriefing.zip
+rm ../ClassroomBriefing.zip
 
-zip -r ./ClassroomBriefing.zip . -x "*.git*"
+zip -r ../ClassroomBriefing.zip . -x "*.git*"
 
-aws lambda update-function-code --function-name ClassroomBriefing --zip-file fileb://./ClassroomBriefing.zip
+aws lambda update-function-code --function-name ClassroomBriefing --zip-file fileb://../ClassroomBriefing.zip

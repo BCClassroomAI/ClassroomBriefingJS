@@ -14,15 +14,16 @@ exports.handler = function(event, context, callback) {
 function initializeBriefingNotes(attributes) {
     if (attributes.briefingNotes == undefined) {
         attributes.briefingNotes = {
+
             "1111": {
-                "2018-11-01": ["We are in course 1111 and today is November 1st", "This is my second note for course 1111 on November 1st."],
-                "2018-11-02": ["We are in course 1111 and today is November 2nd"],
-                "2018-11-03": ["We are in course 1111 and today is November 3rd"]
+                "2018-11-01": ["Hello 1"],
+                "2018-11-02": ["Hello 2"],
+                "2018-11-03": ["Hello 3"]
             },
             "2222": {
-                "2018-11-01": ["We are in course 2222 and today is November 1st"],
-                "2018-11-02": ["We are in course 2222 and today is November 2nd"],
-                "2018-11-03": ["We are in course 2222 and today is November 3rd"]
+                "2018-11-01": ["Hello 1"],
+                "2018-11-02": ["Hello 2"],
+                "2018-11-03": ["Hello 3"]
             }
         }
     }
@@ -32,7 +33,7 @@ const handlers = {
 
     'LaunchRequest': function () {
         console.log('LaunchRequest');
-        const speechOutput = 'This is the Classroom Briefing skill. Would you like me to play a briefing, or add a briefing note?';
+        const speechOutput = 'Hello, and welcome the Classroom Briefing skill. Would you like me to play a briefing, or add a briefing note?';
         this.response.speak(speechOutput).listen('Would you like me to play a briefing, or add a briefing note?');
         this.emit(':responseReady');
     },
@@ -62,6 +63,7 @@ const handlers = {
             } else {
                 notesAccessed.forEach(note => {
                     speechOutput += '<break time = "1s"/>' + `Note ${notesAccessed.indexOf(note) + 1}: "${note}" `;
+                    console.log("*** adding note to speechOutput");
                 });
                 speechOutput += '<break time = "1s"/>' + " What else can I do for you today?"
             }
@@ -100,7 +102,7 @@ const handlers = {
         } else {
             console.log('*** I have the courseNumber: ' + this.event.request.intent.slots.courseNumber.value);
             this.attributes.courseNumber = this.event.request.intent.slots.courseNumber.value;
-            let speechOutput = "And for which date should I add this note?";
+            let speechOutput = "And for which date should I add this note?"
             this.response.speak(speechOutput).listen("For which date should I add this note?");
             this.emit(':responseReady')
         }
@@ -111,7 +113,7 @@ const handlers = {
         if (this.event.request.dialogState !== 'COMPLETED') {
             this.emit(':delegate');
         } else if (!this.attributes.briefingNotes[this.attributes.courseNumber].hasOwnProperty(this.event.request.intent.slots.classDate.value)) {
-            let speechOutput = "I'm sorry, I couldn't find that class date. For which date would you like me to this note?";
+            let speechOutput = "I'm sorry, I couldn't find that class date. For which date would you like me to add this note?";
             let slotToElicit = "classDate";
             this.emit(':elicitSlot', slotToElicit, speechOutput, speechOutput);
         } else {
