@@ -146,6 +146,3 @@ const handlers = {
         this.response.speak(speechOutput).listen(speechOutput);
     }
 };
-
-
-
