@@ -2,3 +2,4 @@
 *.js1
 config
 .ask
+node_modules
