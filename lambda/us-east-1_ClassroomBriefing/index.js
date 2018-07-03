@@ -16,7 +16,7 @@ function initializeBriefingNotes(attributes) {
         attributes.briefingNotes = {
 
             "1111": {
-                "2018-11-01": ["Hello 1"],
+                "2018-07-03": ["Hi there, and welcome to Alexa Skills 101. I am the Eagle Expert, and soon I will be the best teaching assistant professors have ever had. I have many skills that will help in the classroom. Today, I will be demonstrating a few of these features through a mock classroom environment."],
                 "2018-11-02": ["Hello 2"],
                 "2018-11-03": ["Hello 3"]
             },
@@ -33,7 +33,7 @@ const handlers = {
 
     'LaunchRequest': function () {
         console.log('LaunchRequest');
-        const speechOutput = 'Hello, and welcome the Classroom Briefing skill. Would you like me to play a briefing, or add a briefing note?';
+        const speechOutput = 'Hello, and welcome to the Classroom Briefing skill. Would you like me to play a briefing, or add a briefing note?';
         this.response.speak(speechOutput).listen('Would you like me to play a briefing, or add a briefing note?');
         this.emit(':responseReady');
     },
